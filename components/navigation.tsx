@@ -9,6 +9,7 @@ const navItems = [
   { name: "About", path: "/about" },
   { name: "Account", path: "/account" },
   { name: "Users", path: "/users" },
+  { name: "Products", path: "/products" },
 ];
 
 export default function Navigation() {

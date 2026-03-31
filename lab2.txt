@@ -1,0 +1,4 @@
+>>suspense
+>>>Cart Page ==>dynamic rendering
+>>>>components(ISR,SSG,SSR,CSR)
+>>>>custome Error Page

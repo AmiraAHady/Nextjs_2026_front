@@ -4,10 +4,10 @@ import "./globals.css";
 import Header from "@/components/header";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "My App",
-  description: "Simple Next Js App",
-};
+// export const metadata: Metadata = {
+//   title: "My App",
+//   description: "Simple Next Js App",
+// };
 const oswald = Oswald({
   subsets: ["latin"],
 });
