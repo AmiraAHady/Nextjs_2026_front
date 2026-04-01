@@ -1,0 +1,3 @@
+====>implement Auth in your project use Auth.js liberary
+====>convert Navigation to client component
+====>try using server component inside a client component

@@ -1,4 +1,5 @@
 // app/page.jsx
+import Filter from "@/components/filter";
 import ProductList from "@/components/productlist";
 import { Product } from "@/types/product";
 import { Suspense } from "react";
@@ -9,9 +10,29 @@ async function fetchProducts(): Promise<Product[]> {
   const data = await res.json();
   return data.products;
 }
+interface Props {
+  searchParams: Promise<{ category: string }>;
+}
 
-export default async function Home() {
+export default async function Products({ searchParams }: Props) {
   const products = await fetchProducts();
+  const { category } = await searchParams;
+  const filteredValue = category ?? "all";
+
+  let filteredproducts = products;
+  if (filteredValue == "all") filteredproducts = products;
+  if (filteredValue == "beauty")
+    filteredproducts = products.filter(
+      (product) => product.category == "beauty"
+    );
+  if (filteredValue == "fragrances")
+    filteredproducts = products.filter(
+      (product) => product.category == "fragrances"
+    );
+  if (filteredValue == "furniture")
+    filteredproducts = products.filter(
+      (product) => product.category == "furniture"
+    );
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -23,6 +44,8 @@ export default async function Home() {
         with premium materials and attention to detail, making your life easier
         and more enjoyable.
       </p>
+
+      <Filter />
       <Suspense
         fallback={
           <div className="flex">
@@ -30,7 +53,7 @@ export default async function Home() {
           </div>
         }
       >
-        <ProductList products={products} />
+        <ProductList products={filteredproducts} />
       </Suspense>
     </div>
   );
